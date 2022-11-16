@@ -49,33 +49,43 @@ class VideoPlayer
                 List<byte> data = new List<byte>();
                 byte[] line = new byte[FrameWidth * 2];
 
-                int frameNum = 0;
-                int lineNum = 0;
-
                 Console.SetCursorPosition(0, 0);
 
+                int frameLine = 0;
+
+                bool running = true;
                 // Play loop
-                while (true)
+                while (running)
                 {
                     data.AddRange(udp.Receive(ref endPoint));
 
-                    while (data.Count > FrameWidth * 2)
+                    while (data.Count > FrameWidth + 1)
                     {
-                        data.CopyTo(0, line, 0, FrameWidth * 2);
-                        data.RemoveRange(0, FrameWidth * 2);
-                        Console.WriteLine(ASCIIEncoding.UTF8.GetString(line));
+                        data.CopyTo(0, line, 0, FrameWidth + 1);
+                        data.RemoveRange(0, FrameWidth + 1);
+                        Console.WriteLine(ASCIIEncoding.UTF8.GetString(line, 0, FrameWidth));
 
-                        lineNum++;
-                        if (lineNum == FrameHeight - 1)
+                        frameLine++;
+                        if (frameLine == FrameHeight - 1)
                         {
-                            frameNum++;
                             Console.SetCursorPosition(0, 0);
-                            Thread.Sleep(1000);
+                            frameLine = 0;
                         }
-                    }
 
-                    if (frameNum == FrameCount - 1)
-                        break;
+                        //// end of Frame
+                        //if (line[FrameWidth] == 1)
+                        //{
+
+                        //    Console.SetCursorPosition(0, 0);
+                        //    Thread.Sleep(100);
+                        //}
+                        //// end of frames
+                        //else if (line[FrameWidth] == 2)
+                        //{
+                        //    running = false;
+                        //    break;
+                        //}
+                    }
 
                 }
 

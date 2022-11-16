@@ -86,29 +86,44 @@ class VideoStreamer
         // Send data
         unsafe
         {
-            for (int i = 0; i < frames.Count; i++)
+            try
             {
-                //Console.SetCursorPosition(0,0);
-                //Thread.Sleep(10);
-                string[] frame = frames[i];
-                for (int j = 0; j < frames[i].Length; j++)
+                byte[] line = new byte[frameWidth + 1];
+                for (int i = 0; i < frames.Count; i++)
                 {
-                    byte[] line = System.Text.ASCIIEncoding.UTF8.GetBytes(frame[j]);
+                    //Console.SetCursorPosition(0,0);
+                    Thread.Sleep(10);
+                    string[] frame = frames[i];
+                    for (int j = 0; j < frames[i].Length; j++)
+                    {
+                        System.Text.ASCIIEncoding.UTF8.GetBytes(frame[j], 0, frameWidth, line, 0);
+                        if (i == frames.Count - 1)
+                            line[frameWidth] = 2;
+                        else if (j == frame.Length - 1)
+                            line[frameWidth] = 1;
+                        else
+                            line[frameWidth] = 0;
 
-                    streamer.Send(line);
+                        streamer.Send(line);
 
-                    //Console.WriteLine(System.Text.ASCIIEncoding.UTF8.GetString(line));
+                        //Console.WriteLine(System.Text.ASCIIEncoding.UTF8.GetString(line));
 
 
 
-                    //fixed (char* charPtr = line)
-                    //{
-                    //    fixed (byte* bytePtr = (byte*)&charPtr[0])
-                    //    {
-                    //        streamer.Send(bytePtr, line.Lenght);
-                    //    }
-                    //}
+                        //fixed (char* charPtr = line)
+                        //{
+                        //    fixed (byte* bytePtr = (byte*)&charPtr[0])
+                        //    {
+                        //        streamer.Send(bytePtr, line.Lenght);
+                        //    }
+                        //}
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadLine();
             }
         }
 
@@ -117,6 +132,8 @@ class VideoStreamer
         listener.Stop();
         streamer.Close();
         streamer.Dispose();
+
+        Main();
     }
 
     //// For testing 
