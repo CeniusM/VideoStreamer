@@ -1,0 +1,4 @@
+﻿
+
+This is a test where we have a video player where we have loaded abunch of frames in.
+Then it connectes to a client where it then sends the data so that the client can read and disblay it

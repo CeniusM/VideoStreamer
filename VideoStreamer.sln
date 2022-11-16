@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoStreamer", "VideoStreamer\VideoStreamer.csproj", "{7347971F-85AA-4081-9AA2-5C7FEDDF9E9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoPlayer", "VideoPlayer\VideoPlayer.csproj", "{6ABD939E-FCBF-4160-808A-0AD9B2807B72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7347971F-85AA-4081-9AA2-5C7FEDDF9E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7347971F-85AA-4081-9AA2-5C7FEDDF9E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7347971F-85AA-4081-9AA2-5C7FEDDF9E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7347971F-85AA-4081-9AA2-5C7FEDDF9E9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ABD939E-FCBF-4160-808A-0AD9B2807B72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ABD939E-FCBF-4160-808A-0AD9B2807B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ABD939E-FCBF-4160-808A-0AD9B2807B72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ABD939E-FCBF-4160-808A-0AD9B2807B72}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {67345B1E-8F1C-4EFF-9274-62DC88D603C3}
+	EndGlobalSection
+EndGlobal
