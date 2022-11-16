@@ -66,7 +66,7 @@ class VideoPlayer
                         Console.WriteLine(ASCIIEncoding.UTF8.GetString(line, 0, FrameWidth));
 
                         frameLine++;
-                        if (frameLine == FrameHeight - 1)
+                        if (frameLine == FrameHeight)
                         {
                             Console.SetCursorPosition(0, 0);
                             frameLine = 0;
